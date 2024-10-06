@@ -12,6 +12,41 @@
       2) Braces Syntax ({} Used with .scss extension).
 
 
-    SASS VARIABLES:=>  
+    SASS VARIABLES:=>  When SASS variables compiles to css, they do not compile to CSS variables, instead, they directly compile to values.
 
-      
+      MAPS:  Key value pairs.
+             Example:    
+                          $font-weights: (
+                                          "regular": 400,
+                                          "medium": 500,
+                                          "bold": 700
+                                          );
+                           font-weight: map-get($font-weights, bold );
+
+      NESTING:  In SASS we can do nesting of elements.
+                EXAMPLE:
+
+                        .main {
+                                width: 80%;
+                                margin: 0 auto;
+                               p {
+                                  font-weight: map-get($font-weights , bold );
+                                 }
+                              }
+
+        SPECIAL CHAR IN SASS: &
+                              & equals parent (Name of parent).
+
+        Interpolation:
+                              @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+                                .icon-#{$name} {
+                                  background-image: url("/icons/#{$name}.svg");
+                                  position: absolute;
+                                  #{$top-or-bottom}: 0;
+                                  #{$left-or-right}: 0;
+                                }
+                              }
+                              
+                              @include corner-icon("mail", top, left);
+
+        
